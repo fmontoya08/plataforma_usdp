@@ -61,11 +61,11 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i>
-                                    My Profile</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i>
-                                    My Balance</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>
-                                    Inbox</a>
+                                    Mi perfil</a>
+                                <a class="dropdown-item" href="./php/logout.php"><i class="ti-wallet m-r-5 m-l-5"></i>
+                                    Cerrar sesion</a>
+                                <!-- <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>
+                                    Inbox</a> -->
                             </ul>
                         </li>
                         <!-- ============================================================== -->
