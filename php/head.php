@@ -8,6 +8,14 @@
 <meta name="description"
     content="Flexy Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
 <meta name="robots" content="noindex,nofollow">
-<title>Flexy Admin Lite Template by WrapPixel</title>
+<title>
+	<?php 
+		if ($title==='1') {
+			echo "Login";
+		}elseif ($title==='2') {
+			echo "Inicio";
+		}
+	 ?>
+</title>
 <?php include('librerias.php'); ?>
 </head>

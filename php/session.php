@@ -10,7 +10,7 @@
 	$row = mysqli_fetch_assoc($ses_sql);
 	$login_session = $row['nombre'];
 	if (!isset($login_session)) {
-		$mysqli_close($con);
+		mysqli_close($con);
 		header('Location: index.php');
 	}
  ?>
