@@ -14,15 +14,20 @@
     <title>Flexy Admin Lite Template by WrapPixel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/Flexy-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <!-- Custom CSS -->
-    <link href="../dist/css/style.min.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 </head>
 
 <body>
@@ -54,17 +59,17 @@
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo icon -->
-                            <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                            <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->
-                            <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                            <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
                         </span>
                     </a>
                     <!-- ============================================================== -->
@@ -102,7 +107,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/profile.png" alt="user" class="rounded-circle" width="31">
+                                <img src="assets/images/users/profile.png" alt="user" class="rounded-circle" width="31">
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i>
@@ -204,7 +209,29 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                This is some text within a card block.
+                                 <h2>Simple Pagination Example using Datatables Js Library</h2>
+    <table class="table table-fluid" id="myTable">
+    <thead>
+    <tr><th>Name</th><th>Email</th><th>Password</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>Daniel Danny</td><td>danny.daniel@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Samuel</td><td>samuel@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Jack</td><td>jack@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Eureka</td><td>eureka@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Pinky</td><td>pinky@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Mishti</td><td>mishti@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Puneet</td><td>puneet@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Nick</td><td>nick@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Danika</td><td>danika@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Vishakha</td><td>vishakha@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Nitin</td><td>ni3@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Latika</td><td>latika@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Kaavya</td><td>kaavya@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Ishika</td><td>ishika@gmail.com</td><td>Pass1234</td></tr>
+    <tr><td>Veronika</td><td>veronika@gmail.com</td><td>Pass1234</td></tr>
+    </tbody>
+    </table>
                             </div>
                         </div>
                     </div>
@@ -244,16 +271,21 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../dist/js/app-style-switcher.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="dist/js/app-style-switcher.js"></script>
     <!--Wave Effects -->
-    <script src="../dist/js/waves.js"></script>
+    <script src="dist/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="../dist/js/sidebarmenu.js"></script>
+    <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="../dist/js/custom.js"></script>
+    <script src="dist/js/custom.js"></script>
+    <script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+    </script>
 </body>
 
 </html>

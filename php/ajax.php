@@ -1,24 +1,51 @@
 <?php 
 	$username = 'root';
 $password = '';
-$connection = new PDO( 'mysql:host=localhost;dbname=crud', $username, $password ); // Create Object of PDO class by connecting to Mysql database
+$connection = new PDO( 'mysql:host=localhost;dbname=usdp', $username, $password ); // Create Object of PDO class by connecting to Mysql database
 
 if(isset($_POST["action"])) //Check value of $_POST["action"] variable value is set to not
 {
-	 if($_POST["action"] == "Select")
+	
+ //This code for Create new Records
+ if($_POST["action"] == "Create")
+ {
+  $statement = $connection->prepare("
+   INSERT INTO usdp_usuarios (nombre, perfil, email, telefono, estatus) 
+   VALUES (:nombre, :perfil, :email, :telefono, :estatus)
+  ");
+  $result = $statement->execute(
+   array(
+    ':nombre' => $_POST["nombre"],
+    ':perfil' => $_POST["perfil"],
+    ':email' => $_POST["email"],
+    ':telefono' => $_POST["telefono"],
+    ':estatus' => $_POST["estatus"]
+   )
+  );
+  if(!empty($result))
+  {
+   echo 'Data Inserted';
+  }
+ }
+
+     if($_POST["action"] == "Select")
  {
   $output = array();
   $statement = $connection->prepare(
-   "SELECT * FROM customers 
-   WHERE id = '".$_POST["id"]."' 
+   "SELECT * FROM usdp_usuarios 
+   WHERE id_usuario = '".$_POST["id"]."' 
    LIMIT 1"
   );
   $statement->execute();
   $result = $statement->fetchAll();
   foreach($result as $row)
   {
-   $output["first_name"] = $row["first_name"];
-   $output["last_name"] = $row["last_name"];
+   $output["nombre"] = $row["nombre"];
+   $output["perfil"] = $row["perfil"];
+   $output["email"] = $row["email"];
+   $output["telefono"] = $row["telefono"];
+   $output["estatus"] = $row["estatus"];
+
   }
   echo json_encode($output);
  }
@@ -61,5 +88,5 @@ if(isset($_POST["action"])) //Check value of $_POST["action"] variable value is 
  }
 
 }
-}
+
  ?>

@@ -17,7 +17,7 @@
                                 href="icon-material.html" aria-expanded="false"><i class="mdi mdi-face"></i><span
                                     class="hide-menu">Icon</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="starter-kit.html" aria-expanded="false"><i class="mdi mdi-file"></i><span
+                                href="starter-kit.php" aria-expanded="false"><i class="mdi mdi-file"></i><span
                                     class="hide-menu">Blank</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="error-404.html" aria-expanded="false"><i class="mdi mdi-alert-outline"></i><span

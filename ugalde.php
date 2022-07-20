@@ -3,6 +3,7 @@
     require_once('./php/db.php');
     require_once('./php/conexion.php');
     $title = '2';
+
  ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="es-MX">
@@ -57,9 +58,7 @@
                           </nav>
                     </div>
                     <div class="col-4">
-                        <div class="text-end upgrade-btn">
-                             <button type="button" id="modal_button" class="btn btn-info">Create Records</button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -80,16 +79,19 @@
                         </ul>
                         <div class="tab-content">
                           <div class="tab-pane container active" id="usuarios">
+                            <div class="text-end upgrade-btn">
+                             <button type="button" id="modal_button" class="btn btn-info" style="color: #ffffff;">Agregar usuario</button>
+                        </div>
                                <div class="table-responsive">
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Perfil</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Telefono</th>
-                                                <th scope="col">Estatus</th>
-                                                <th scope="col">Action</th>
+                                                <th scope="col" class="text-center">Nombre</th>
+                                                <th scope="col" class="text-center">Perfil</th>
+                                                <th scope="col" class="text-center">Email</th>
+                                                <th scope="col" class="text-center">Telefono</th>
+                                                <th scope="col" class="text-center">Estatus</th>
+                                                <th scope="col" class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -99,15 +101,15 @@
                                                 while($row = mysqli_fetch_array($consulta)){
                                                 echo '
                                                     <tr>
-                                                <td>'.$row['nombre'].'</td>
-                                                <td>'.$row['perfil'].'</td>
-                                                <td>'.$row['email'].'</td>
-                                                <td>'.$row['telefono'].'</td>
-                                                <td>'.$row['estatus'].'</td>
-                                                <td>
+                                                <td class="text-center">'.$row['nombre'].'</td>
+                                                <td class="text-center">'.$row['perfil'].'</td>
+                                                <td class="text-center">'.$row['email'].'</td>
+                                                <td class="text-center">'.$row['telefono'].'</td>
+                                                <td class="text-center">'.$row['estatus'].'</td>
+                                                <td class="text-center">
                                                     <div class="btn-group" role="group">
                                                         <!--<button type="button" class="btn btn-primary">Estatus</button>-->
-                                                        <button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true">Editar</i></button>
+                                                        <button type="button" id ="'.$row["id_usuario"].'" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true">Editar</i></button>
                                                         <button type="button" id="'.$row["id_usuario"].'" class="btn btn-danger btn-xs delete">Delete</button>
                                                     </div>
                                                 </td>
@@ -116,6 +118,7 @@
                                              ?>
                                         </tbody>
                                     </table>
+                                    
                                 </div>
                           </div>
                           <div class="tab-pane container fade" id="clientes">Clientes</div>
@@ -172,7 +175,7 @@ $(document).ready(function(){
  {
   var action = "Load";
   $.ajax({
-   url : "action.php", //Request send to "action.php page"
+   url : "./php/ajax.php", //Request send to "./php/ajax.php page"
    method:"POST", //Using of Post method for send data
    data:{action:action}, //action variable data has been send to server
    success:function(data){
@@ -189,22 +192,25 @@ $(document).ready(function(){
   $('#email').val(''); //This will clear Modal first name textbox
   $('#telefono').val('');
   $('#estatus').val(''); //This will clear Modal last name textbox
-  $('.modal-title').text("Create New Records"); //It will change Modal title to Create new Records
-  $('#action').val('Create'); //This will reset Button value ot Create
+  $('.modal-title').text("Ingrese la informacion de usuario"); //It will change Modal title to Create new Records
+  $('#action').val('Agregar'); //This will reset Button value ot Create
  });
 
  //This JQuery code is for Click on Modal action button for Create new records or Update existing records. This code will use for both Create and Update of data through modal
  $('#action').click(function(){
-  var firstName = $('#nombre').val(); //Get the value of first name textbox.
-  var lastName = $('#perfil').val(); //Get the value of last name textbox
+  var nombre = $('#nombre').val(); //Get the value of first name textbox.
+  var perfil = $('#perfil').val();
+  var email = $('#email').val();
+  var telefono = $('#telefono').val();
+  var estatus = $('#estatus').val(); //Get the value of last name textbox
   var id = $('#customer_id').val();  //Get the value of hidden field customer id
   var action = $('#action').val();  //Get the value of Modal Action button and stored into action variable
-  if(firstName != '' && lastName != '') //This condition will check both variable has some value
+  if(nombre != '' && perfil != '' && email != '' && telefono != '' && estatus != '') //This condition will check both variable has some value
   {
    $.ajax({
-    url : "action.php",    //Request send to "action.php page"
+    url : "./php/ajax.php",    //Request send to "./php/ajax.php page"
     method:"POST",     //Using of Post method for send data
-    data:{firstName:firstName, lastName:lastName, id:id, action:action}, //Send data to server
+    data:{nombre:nombre, perfil:perfil, email:email, telefono:telefono, estatus:estatus, id:id, action:action}, //Send data to server
     success:function(data){
      alert(data);    //It will pop up which data it was received from server side
      $('#customerModal').modal('hide'); //It will hide Customer Modal from webpage.
@@ -223,7 +229,7 @@ $(document).ready(function(){
   var id = $(this).attr("id"); //This code will fetch any customer id from attribute id with help of attr() JQuery method
   var action = "Select";   //We have define action variable value is equal to select
   $.ajax({
-   url:"action.php",   //Request send to "action.php page"
+   url:"./php/ajax.php",   //Request send to "./php/ajax.php page"
    method:"POST",    //Using of Post method for send data
    data:{id:id, action:action},//Send data to server
    dataType:"json",   //Here we have define json data type, so server will send data in json format.
@@ -245,7 +251,7 @@ $(document).ready(function(){
   {
    var action = "Delete"; //Define action variable value Delete
    $.ajax({
-    url:"action.php",    //Request send to "action.php page"
+    url:"./php/ajax.php",    //Request send to "./php/ajax.php page"
     method:"POST",     //Using of Post method for send data
     data:{id:id, action:action}, //Data send to server from ajax method
     success:function(data)
@@ -263,9 +269,6 @@ $(document).ready(function(){
 });
 </script>
 
-</body>
-
-</html>
 <div id="customerModal" class="modal fade">
  <div class="modal-dialog">
   <div class="modal-content">
@@ -291,8 +294,11 @@ $(document).ready(function(){
    <div class="modal-footer">
     <input type="hidden" name="customer_id" id="customer_id" />
     <input type="submit" name="action" id="action" class="btn btn-success" />
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
    </div>
   </div>
  </div>
 </div>
+</body>
+
+</html>
