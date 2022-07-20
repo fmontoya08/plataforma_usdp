@@ -53,28 +53,31 @@ if(isset($_POST["action"])) //Check value of $_POST["action"] variable value is 
  if($_POST["action"] == "Update")
  {
   $statement = $connection->prepare(
-   "UPDATE customers 
-   SET first_name = :first_name, last_name = :last_name 
-   WHERE id = :id
+   "UPDATE usdp_usuarios 
+   SET nombre = :nombre, perfil = :perfil, email = :email, telefono = :telefono, estatus = :estatus 
+   WHERE id_usuario = :id
    "
   );
   $result = $statement->execute(
    array(
-    ':first_name' => $_POST["firstName"],
-    ':last_name' => $_POST["lastName"],
+    ':nombre' => $_POST["nombre"],
+    ':perfil' => $_POST["perfil"],
+    ':email'   => $_POST["email"],
+    ':telefono' => $_POST["telefono"],
+    ':estatus' => $_POST["estatus"],
     ':id'   => $_POST["id"]
    )
   );
   if(!empty($result))
   {
-   echo 'Data Updated';
+   echo 'El registro se a actualizado correctamente!';
   }
  }
 
  if($_POST["action"] == "Delete")
  {
   $statement = $connection->prepare(
-   "DELETE FROM customers WHERE id = :id"
+   "DELETE FROM usdp_usuarios WHERE id_usuario = :id"
   );
   $result = $statement->execute(
    array(
@@ -83,7 +86,7 @@ if(isset($_POST["action"])) //Check value of $_POST["action"] variable value is 
   );
   if(!empty($result))
   {
-   echo 'Data Deleted';
+   echo 'Registro eliminado con exito!';
   }
  }
 

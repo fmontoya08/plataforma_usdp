@@ -80,7 +80,7 @@
                         <div class="tab-content">
                           <div class="tab-pane container active" id="usuarios">
                             <div class="text-end upgrade-btn">
-                             <button type="button" id="modal_button" class="btn btn-info" style="color: #ffffff;">Agregar usuario</button>
+                             <button type="button" id="modal_button" class="btn btn-info m-3" style="color: #ffffff;">Agregar usuario</button>
                         </div>
                                <div class="table-responsive">
                                     <table class="table">
@@ -108,9 +108,8 @@
                                                 <td class="text-center">'.$row['estatus'].'</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group">
-                                                        <!--<button type="button" class="btn btn-primary">Estatus</button>-->
-                                                        <button type="button" id ="'.$row["id_usuario"].'" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true">Editar</i></button>
-                                                        <button type="button" id="'.$row["id_usuario"].'" class="btn btn-danger btn-xs delete">Delete</button>
+                                                        <button type="button" id ="'.$row["id_usuario"].'" class="btn btn-warning update" style="color:#ffffff;">Editar</button>
+                                                        <button type="button" id="'.$row["id_usuario"].'" class="btn btn-danger delete" style="color:#ffffff;">Eliminar</button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -235,11 +234,15 @@ $(document).ready(function(){
    dataType:"json",   //Here we have define json data type, so server will send data in json format.
    success:function(data){
     $('#customerModal').modal('show');   //It will display modal on webpage
-    $('.modal-title').text("Update Records"); //This code will change this class text to Update records
+    $('.modal-title').text("Actualizar informacion"); //This code will change this class text to Update records
     $('#action').val("Update");     //This code will change Button value to Update
     $('#customer_id').val(id);     //It will define value of id variable to this customer id hidden field
     $('#nombre').val(data.nombre);  //It will assign value to modal first name texbox
-    $('#perfil').val(data.perfil);  //It will assign value of modal last name textbox
+    $('#perfil').val(data.perfil); 
+    $('#email').val(data.email);  //It will assign value to modal first name texbox
+    $('#telefono').val(data.telefono); 
+    $('#estatus').val(data.estatus);  //It will assign value to modal first name texbox
+    
    }
   });
  });
@@ -247,7 +250,7 @@ $(document).ready(function(){
  //This JQuery code is for Delete customer data. If we have click on any customer row delete button then this code will execute
  $(document).on('click', '.delete', function(){
   var id = $(this).attr("id"); //This code will fetch any customer id from attribute id with help of attr() JQuery method
-  if(confirm("Are you sure you want to remove this data?")) //Confim Box if OK then
+  if(confirm("Estas seguro de eliminar este registro?")) //Confim Box if OK then
   {
    var action = "Delete"; //Define action variable value Delete
    $.ajax({
@@ -282,19 +285,19 @@ $(document).ready(function(){
     <label>Perfil</label>
     <input type="text" name="perfil" id="perfil" class="form-control" />
     <br />
-    <label>email</label>
+    <label>Correo electronico</label>
     <input type="text" name="email" id="email" class="form-control" />
     <br />
-    <label>telefono</label>
+    <label>Telefono</label>
     <input type="text" name="telefono" id="telefono" class="form-control" />
     <br />
-    <label>estatus</label>
+    <label>Estatus</label>
     <input type="text" name="estatus" id="estatus" class="form-control" />
    </div>
    <div class="modal-footer">
     <input type="hidden" name="customer_id" id="customer_id" />
-    <input type="submit" name="action" id="action" class="btn btn-success" />
-    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    <input type="submit" name="action" id="action" class="btn btn-primary" style="color: #ffffff;" />
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="color: #ffffff;">Cerrar</button>
    </div>
   </div>
  </div>
