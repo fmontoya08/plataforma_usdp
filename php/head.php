@@ -14,6 +14,10 @@
 			echo "Login";
 		}elseif ($title==='2') {
 			echo "Inicio";
+		}elseif ($title==='3') {
+			echo "Usuarios inactivos";
+		}else{
+			echo "Plataforma USDP";
 		}
 	 ?>
 </title>

@@ -11,41 +11,18 @@
 <?php include('./php/head.php'); ?>
 
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
+    
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
         <?php include('./php/header.php'); ?>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
         <?php include('./php/menu.php'); ?>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-8">
@@ -58,7 +35,6 @@
                           </nav>
                     </div>
                     <div class="col-4">
-                        
                     </div>
                 </div>
             </div>
@@ -80,10 +56,13 @@
                         <div class="tab-content">
                           <div class="tab-pane container active" id="usuarios">
                             <div class="text-end upgrade-btn">
+                                <!-- <div class="btn-group" role="group" aria-label="Basic example">
+                                  <a href="inactivos.php?pagina=usuarios" class="btn btn-info" style="color:#ffffff;" target="_blank">Inactivos</a>
+                                </div> -->
                              <button type="button" id="modal_button" class="btn btn-info m-3" style="color: #ffffff;">Agregar usuario</button>
-                        </div>
+                            </div>
                                <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table" id="tabla_dinamica">
                                         <thead>
                                             <tr>
                                                 <th scope="col" class="text-center">Nombre</th>
@@ -91,25 +70,26 @@
                                                 <th scope="col" class="text-center">Email</th>
                                                 <th scope="col" class="text-center">Telefono</th>
                                                 <th scope="col" class="text-center">Estatus</th>
-                                                <th scope="col" class="text-center">Action</th>
+                                                <th scope="col" class="text-center">Accion</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php 
-                                                $query = "SELECT * FROM usdp_usuarios WHERE estatus = '1'";
-                                                $consulta = mysqli_query($con, $query);
-                                                while($row = mysqli_fetch_array($consulta)){
+                                                $query_usuarios = "SELECT * FROM usdp_usuarios";
+                                                $consulta_usuarios = mysqli_query($con, $query_usuarios);
+                                                while($row_usuarios = mysqli_fetch_array($consulta_usuarios)){
                                                 echo '
                                                     <tr>
-                                                <td class="text-center">'.$row['nombre'].'</td>
-                                                <td class="text-center">'.$row['perfil'].'</td>
-                                                <td class="text-center">'.$row['email'].'</td>
-                                                <td class="text-center">'.$row['telefono'].'</td>
-                                                <td class="text-center">'.$row['estatus'].'</td>
+                                                <td class="text-center">'.$row_usuarios['nombre'].'</td>
+                                                <td class="text-center">'.$row_usuarios['perfil'].'</td>
+                                                <td class="text-center">'.$row_usuarios['email'].'</td>
+                                                <td class="text-center">'.$row_usuarios['telefono'].'</td>
+                                                <td class="text-center">'.(($row_usuarios['estatus']==='1'?'Activo':'Inactivo')).'</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group">
-                                                        <button type="button" id ="'.$row["id_usuario"].'" class="btn btn-warning update" style="color:#ffffff;">Editar</button>
-                                                        <button type="button" id="'.$row["id_usuario"].'" class="btn btn-danger delete" style="color:#ffffff;">Eliminar</button>
+                                                    <a href="vista_usuario.php?usuario='.$row_usuarios['id_usuario'].' " class="btn btn-info" style="color:#ffffff;">Ver</a>
+                                                        <button type="button" id ="'.$row_usuarios["id_usuario"].'" class="btn btn-warning update" style="color:#ffffff;">Editar</button>
+                                                        <button type="button" id="'.$row_usuarios["id_usuario"].'" class="btn btn-danger delete" style="color:#ffffff;">Eliminar</button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -120,7 +100,56 @@
                                     
                                 </div>
                           </div>
-                          <div class="tab-pane container fade" id="clientes">Clientes</div>
+                          <div class="tab-pane container fade" id="clientes">
+                              <div class="text-end upgrade-btn">
+                                <!-- <div class="btn-group" role="group" aria-label="Basic example">
+                                  <a href="inactivos.php?pagina=usuarios" class="btn btn-info" style="color:#ffffff;" target="_blank">Inactivos</a>
+                                </div> -->
+                             <button type="button" id="modal_button" class="btn btn-info m-3" style="color: #ffffff;">Agregar cliente</button>
+                            </div>
+                               <div class="table-responsive">
+                                    <table class="table" id="tabla_dinamica2">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="text-center">Nombre</th>
+                                                <th scope="col" class="text-center">Calle</th>
+                                                <th scope="col" class="text-center">Telefono</th>
+                                                <th scope="col" class="text-center">Web</th>
+                                                <th scope="col" class="text-center">Agregado por</th>
+                                                <th scope="col" class="text-center">Fecha ingreso</th>
+                                                <th scope="col" class="text-center">Hora ingreso</th>
+                                                <th scope="col" class="text-center">Accion</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                                $query_clientes = "SELECT * FROM usdp_clientes";
+                                                $consulta_clientes = mysqli_query($con, $query_clientes);
+                                                while($row_clientes = mysqli_fetch_array($consulta_clientes)){
+                                                echo '
+                                                    <tr>
+                                                <td class="text-center">'.$row_clientes['nombre'].'</td>
+                                                <td class="text-center">'.$row_clientes['direccion'].'</td>
+                                                <td class="text-center">'.$row_clientes['telefono'].'</td>
+                                                <td class="text-center">'.$row_clientes['sitio_web'].'</td>
+                                                <td class="text-center">'.$row_clientes['agregado'].'</td>
+                                                <td class="text-center">'.$row_clientes['fecha_ingreso'].'</td>
+                                                <td class="text-center">'.$row_clientes['hora_ingreso'].'</td>
+                                                <td class="text-center">
+                                                    <div class="btn-group" role="group">
+                                                        <a href="vista_cliente.php?cliente='.$row_clientes['id_cliente'].' " class="btn btn-primary">Ver</a>
+                                                        <button type="button" id ="'.$row_clientes["id_cliente"].'" class="btn btn-warning update" style="color:#ffffff;">Editar</button>
+                                                        <button type="button" id="'.$row_clientes["id_cliente"].'" class="btn btn-danger delete" style="color:#ffffff;">Eliminar</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                                ';}
+                                             ?>
+                                        </tbody>
+                                    </table>
+                                    
+                                </div>
+                          </div>
                           <div class="tab-pane container fade" id="marcas">Marcas</div>
                         </div>
                     </div>
@@ -134,39 +163,12 @@
 
 
 
-            <footer class="footer text-center">
-                All Rights Reserved by Flexy Admin. Designed and Developed by <a
-                    href="https://www.wrappixel.com">WrapPixel</a>.
-            </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
+            <?php include('./php/footer.php'); ?>
+
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="dist/js/app-style-switcher.js"></script>
-    <!--Wave Effects -->
-    <script src="dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="dist/js/custom.js"></script>
-    <!--This page JavaScript -->
-    <!--chartis chart-->
-    <script src="assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="dist/js/pages/dashboards/dashboard1.js"></script>
+
+    <?php include('./php/script.php'); ?>
     <script>
 $(document).ready(function(){
  fetchUser(); //This function will load all data on web page when page load
@@ -174,7 +176,7 @@ $(document).ready(function(){
  {
   var action = "Load";
   $.ajax({
-   url : "./php/ajax.php", //Request send to "./php/ajax.php page"
+   url : "./php/action_usuarios.php", //Request send to "./php/action_usuarios.php page"
    method:"POST", //Using of Post method for send data
    data:{action:action}, //action variable data has been send to server
    success:function(data){
@@ -207,7 +209,7 @@ $(document).ready(function(){
   if(nombre != '' && perfil != '' && email != '' && telefono != '' && estatus != '') //This condition will check both variable has some value
   {
    $.ajax({
-    url : "./php/ajax.php",    //Request send to "./php/ajax.php page"
+    url : "./php/action_usuarios.php",    //Request send to "./php/action_usuarios.php page"
     method:"POST",     //Using of Post method for send data
     data:{nombre:nombre, perfil:perfil, email:email, telefono:telefono, estatus:estatus, id:id, action:action}, //Send data to server
     success:function(data){
@@ -228,7 +230,7 @@ $(document).ready(function(){
   var id = $(this).attr("id"); //This code will fetch any customer id from attribute id with help of attr() JQuery method
   var action = "Select";   //We have define action variable value is equal to select
   $.ajax({
-   url:"./php/ajax.php",   //Request send to "./php/ajax.php page"
+   url:"./php/action_usuarios.php",   //Request send to "./php/action_usuarios.php page"
    method:"POST",    //Using of Post method for send data
    data:{id:id, action:action},//Send data to server
    dataType:"json",   //Here we have define json data type, so server will send data in json format.
@@ -254,7 +256,7 @@ $(document).ready(function(){
   {
    var action = "Delete"; //Define action variable value Delete
    $.ajax({
-    url:"./php/ajax.php",    //Request send to "./php/ajax.php page"
+    url:"./php/action_usuarios.php",    //Request send to "./php/action_usuarios.php page"
     method:"POST",     //Using of Post method for send data
     data:{id:id, action:action}, //Data send to server from ajax method
     success:function(data)

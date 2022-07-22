@@ -24,7 +24,7 @@ if(isset($_POST["action"])) //Check value of $_POST["action"] variable value is 
   );
   if(!empty($result))
   {
-   echo 'Data Inserted';
+   echo 'La informacion de a añadido con exito !';
   }
  }
 
