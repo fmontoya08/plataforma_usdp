@@ -65,6 +65,7 @@
                                                 <font class="font-medium"><?php echo $row_cliente['numero_cliente']; ?></font>
                                             </a></div>
                                     </div>
+                                    <hr>
                                     <div class="row text-center justify-content-md-center">
                                         <div class="col-6"><a href="javascript:void(0)" class="link"><i
                                                     class="icon-people"></i>
@@ -77,6 +78,7 @@
                                                 }else{echo "Inactivo";} ?></font>
                                             </a></div>
                                     </div>
+                                    <hr>
                                     <div class="row text-center justify-content-md-center">
                                         <div class="col-6"><a href="javascript:void(0)" class="link"><i
                                                     class="icon-people"></i>
