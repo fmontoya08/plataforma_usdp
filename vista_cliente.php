@@ -3,7 +3,7 @@
     require_once('./php/db.php');
     require_once('./php/conexion.php');
     $title = '4';
-    $cliente = $_GET['cliente'];
+    $cliente = $_GET['usuario'];
 
     $query_consulta_cliente = "SELECT * FROM usdp_clientes WHERE id_cliente = '$cliente'";
     $consulta_cliente = mysqli_query($con, $query_consulta_cliente);
@@ -51,7 +51,7 @@
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-body">
-                                <center class="m-t-30"> <img src="assets/images/users/5.jpg"
+                                <center class="m-t-30"> <img src="assets/images/logo-user.png"
                                         class="rounded-circle" width="150" />
                                     <h4 class="card-title m-t-10"><?php echo $row_cliente['nombre']; ?></h4>
                                     <h6 class="card-subtitle"><?php echo $row_cliente['compania']; ?></h6>
@@ -62,7 +62,7 @@
                                             </a></div>
                                         <div class="col-6"><a href="javascript:void(0)" class="link"><i
                                                     class="icon-picture"></i>
-                                                <font class="font-medium"><?php echo $row_cliente['numero_cliente']; ?></font>
+                                                <font class="font-medium"><?php echo $row_cliente['no_cliente']; ?></font>
                                             </a></div>
                                     </div>
                                     <hr>
@@ -94,14 +94,14 @@
                             <div>
                                 <hr>
                             </div>
-                            <div class="card-body"> <small class="text-muted">Direccion</small>
+                           <!--  <div class="card-body"> <small class="text-muted">Direccion</small>
                                 <h6>* <?php echo $row_cliente['direccion']; ?><br>* <?php echo $row_cliente['direccion_2']; ?></h6> <small class="text-muted p-t-30 db">Telefono de contacto</small>
                                 <h6>Tel: <?php echo $row_cliente['telefono']; ?></h6><h6>Cel: <?php echo $row_cliente['celular']; ?></h6> <small class="text-muted p-t-30 db">Datos extras</small>
                                 <h6><?php echo $row_cliente['ciudad']; ?></h6>
                                 <h6><?php echo $row_cliente['provincia']; ?></h6>
                                 <h6><?php echo $row_cliente['cp']; ?></h6>
                                 <h6><?php echo $row_cliente['pais']; ?></h6>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <!-- Column -->
@@ -113,8 +113,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Puesto de Trabajo</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="<?php echo $row_cliente[
-                                            'puesto_trabajo']; ?>"
+                                            <input type="text" placeholder=""
                                                 class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
@@ -140,7 +139,7 @@
                                         <label class="col-md-12">Sitio web</label>
                                         <div class="col-md-12">
                                             <input type="text" placeholder="<?php echo $row_cliente[
-                                            'sitio_web']; ?>"
+                                            'web']; ?>"
                                                 class="form-control form-control-line" readonly>
                                         </div>
                                     </div>

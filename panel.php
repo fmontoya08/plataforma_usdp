@@ -78,20 +78,39 @@
                             <div class="card-body">
                                 <div class="d-md-flex align-items-center">
                                     <div>
-                                        <h4 class="card-title">Sales Summary</h4>
-                                        <h6 class="card-subtitle">Ample admin Vs Pixel admin</h6>
-                                    </div>
-                                    <div class="ms-auto d-flex no-block align-items-center">
-                                        <ul class="list-inline dl d-flex align-items-center m-r-15 m-b-0">
-                                            <li class="list-inline-item d-flex align-items-center text-info"><i class="fa fa-circle font-10 me-1"></i> Ample
-                                            </li>
-                                            <li class="list-inline-item d-flex align-items-center text-primary"><i class="fa fa-circle font-10 me-1"></i> Pixel
-                                            </li>
-                                        </ul>
+                                        <h4 class="card-title">Eventos programados</h4>
+                                        <!-- <h6 class="card-subtitle">Ample admin Vs Pixel admin</h6> -->
                                     </div>
                                 </div>
-                                <div class="amp-pxl mt-4" style="height: 350px;">
-                                    <div class="chartist-tooltip"></div>
+                                <div class=" mt-4" style="height: 350px;">
+                                    <div >
+                                        <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th>Firstname</th>
+                                                <th>Lastname</th>
+                                                <th>Email</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <td>John</td>
+                                                <td>Doe</td>
+                                                <td>john@example.com</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Mary</td>
+                                                <td>Moe</td>
+                                                <td>mary@example.com</td>
+                                              </tr>
+                                              <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -99,8 +118,8 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Weekly Stats</h4>
-                                <h6 class="card-subtitle">Average sales</h6>
+                                <h4 class="card-title">Tareas asignadas</h4>
+                                <!-- <h6 class="card-subtitle">Average sales</h6> -->
                                 <div class="mt-5 pb-3 d-flex align-items-center">
                                     <span class="btn btn-primary btn-circle d-flex align-items-center">
                                         <i class="mdi mdi-cart-outline fs-4" ></i>

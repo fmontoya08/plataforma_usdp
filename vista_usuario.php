@@ -9,6 +9,13 @@
     $consulta_usuario = mysqli_query($con, $query_consulta_usuario);
     $row_usuario = mysqli_fetch_array($consulta_usuario);
 
+    $nombre_usuario = $row_usuario['nombre'];
+
+    $query_consulta_usuario2 = "SELECT * FROM usdp_documentos WHERE titulo = '$nombre_usuario'";
+    $consulta_usuario2 = mysqli_query($con, $query_consulta_usuario2);
+    $row_usuario2 = mysqli_fetch_array($consulta_usuario2);
+    
+
  ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="es-MX">
@@ -35,7 +42,6 @@
                             <ol class="breadcrumb mb-0 d-flex align-items-center">
                               <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
                               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                              <li class="breadcrumb-item active" aria-current="page">Ugalde</li>
                               <li class="breadcrumb-item active" aria-current="page">Usuario</li>
                             </ol>
                           </nav>
@@ -51,7 +57,7 @@
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-body">
-                                <center class="m-t-30"> <img src="assets/images/logo-user.png"
+                                <center class="m-t-30"> <img src="./assets/images/logo-user.png"
                                         class="rounded-circle" width="150" />
                                     <h4 class="card-title m-t-10"><?php echo $row_usuario['nombre']; ?></h4>
                                     <h6 class="card-subtitle"><?php echo $row_usuario['perfil']; ?></h6>
@@ -117,28 +123,14 @@
                                             </div>
                                           </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <button class="btn btn-success text-white">Update Profile</button>
-                                        </div>
-                                    </div>
+                                    
                                 </form>
                             </div>
                         </div>
                     </div>
                     <!-- Column -->
                 </div>
-                <!-- Row -->
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
+                
             </div>
 
             

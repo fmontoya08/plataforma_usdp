@@ -12,3 +12,4 @@
     <script type="text/javascript" src="datatables/datatables.min.js"></script>    
     <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript" src="main2.js"></script>  
+       <script type="text/javascript" src="main3.js"></script>  
